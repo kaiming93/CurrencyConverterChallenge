@@ -7,9 +7,4 @@ module.exports = {
     hot: true,
     open: true,
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.name': JSON.stringify('Kai'),
-    }),
-  ],
 }
