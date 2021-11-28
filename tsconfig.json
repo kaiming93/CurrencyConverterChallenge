@@ -14,6 +14,6 @@
     "typeRoots": ["node_modules/@types", "src/typings"],
     "esModuleInterop": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "__tests__"],
   "exclude": ["node_modules"]
 }
