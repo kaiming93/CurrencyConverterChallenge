@@ -1,7 +1,8 @@
-import { Input } from "./components/Input/Input";
-import { Button } from "./components/Button/Button";
+import React from 'react';
+import Input from "./components/Input/Input";
+import Button from "./components/Button/Button";
 
-export const App = () => {
+const App = () => {
   const handleClick = (event:any) => { console.log(event, "click") };
   return (
     <div>
@@ -11,3 +12,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;
