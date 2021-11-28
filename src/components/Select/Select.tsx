@@ -6,7 +6,7 @@ const Input: React.FC<ISelectProps> = (props: any) => {
     <select title={props.title} onChange={(event) => props.setValue(event?.target.value)}>
       {props.options.map((element: any, index: number) => {
         return (
-          <option tabIndex={0} key={index} value={element[0]}>
+          <option tabIndex={0} key={index} value={element[0]} selected={element[0] === props.defaultValue?true:false}>
             {element[0]}/{element[1]}
           </option>
         );
