@@ -18,14 +18,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.(scss|css)$/,
         use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { modules: true }
-          },
-          'sass-loader'
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ]
       },
       {

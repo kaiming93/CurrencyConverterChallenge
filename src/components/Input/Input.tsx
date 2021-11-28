@@ -3,7 +3,7 @@ import { IInputProps } from './IInput';
 
 const Input: React.FC<IInputProps> = (props:any) => {
     return (
-        <input title={props.title}/>
+        <input type="text" onChange={(event) => props.setValue(event.target.value)} title={props.title}/>
     )
   }
 
