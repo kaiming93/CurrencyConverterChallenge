@@ -23,8 +23,8 @@ const App = () => {
     <div className="currency-converter">
       <h1>Currency Converter</h1>
       <Input title="input" setValue={setAmount} />
-      <Select title="select" defaultValue="GBP" setValue={setFirstCountry} options={countries} />
-      <Select title="select" defaultValue="EUR" setValue={setSecondCountry} options={countries} />
+      <Select title="select" defaultValue={firstCountry} setValue={setFirstCountry} options={countries} />
+      <Select title="select" defaultValue={secondCountry} setValue={setSecondCountry} options={countries} />
       <Button
         title="Calculate"
         clickFunc={handleClick}
