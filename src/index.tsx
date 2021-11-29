@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './scss/app.scss';
-import App from './App';
+import './CurrencyConverter.scss';
+import CurrencyConverter from './CurrencyConverter';
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<CurrencyConverter />, document.getElementById('root'))

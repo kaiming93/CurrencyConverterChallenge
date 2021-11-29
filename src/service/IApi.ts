@@ -1,4 +1,4 @@
-interface IRates {
+export interface IRates {
     id: number;
     userId?: number;
     title: string;

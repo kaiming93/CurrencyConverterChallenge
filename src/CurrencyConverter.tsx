@@ -2,9 +2,9 @@ import React from "react";
 import Input from "./components/Input/Input";
 import Select from "./components/Select/Select";
 import Button from "./components/Button/Button";
-import { getRates, getCountries } from "./service/api";
+import { getRates, getCountries } from "./service/Api";
 
-const App = () => {
+const CurrencyConverter = () => {
   const [rates, setRates] = React.useState<any>([]);
   const [countries, setCountries] = React.useState<any>([]);
   const [amount, setAmount] = React.useState<number|undefined|"">("");
@@ -46,4 +46,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default CurrencyConverter;
