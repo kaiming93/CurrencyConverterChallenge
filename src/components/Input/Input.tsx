@@ -5,7 +5,6 @@ import Error from '../Error/Error'
 const Input: React.FC<IInputProps> = (props: any) => {
   const preventInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let reg = new RegExp('[0-9Backspace]');
-    console.log(reg.test(e.key), e.key)
     !reg.test(e.key) && e.preventDefault();
   }
   return (

@@ -1,3 +1,53 @@
 .custom-select {
-    margin-bottom: 20px;
+  display: inline-block;
+  min-width: 250px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  &__selected-text {
+    padding: 6px 20px;
+    background-color: lightskyblue;
+    border: 1px solid lightskyblue;
+    &:hover {
+      background-color: lightseagreen;
+      color: white;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      top: 16px;
+      border: 7px solid transparent;
+      border-color: #fff transparent transparent transparent;
+      z-index: 0;
+    }
+    &.active::after {
+      top: 8px;
+      border-color: transparent transparent #fff transparent;
+    }
+  }
+
+  &__select-options {
+    position: absolute;
+    width: 100%;
+    max-height: 500px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 9999;
+    overflow: scroll;
+    overflow-x: hidden;
+    &__option {
+      list-style-type: none;
+      padding: 6px 20px;
+      background-color: lightskyblue;
+      border-bottom: 1px solid lightskyblue;
+      cursor: pointer;
+      display: flex;
+      &:hover {
+        background-color: lightseagreen;
+        color: white;
+      }
+    }
+  }
 }
