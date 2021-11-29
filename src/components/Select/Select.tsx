@@ -10,8 +10,8 @@ const Select: React.FC<ISelectProps> = (props: any) => {
 
   const handleClickEvent = (e: any) => {
     if (
-      !e.target.classList.contains("custom-select-option") &&
-      !e.target.classList.contains("selected-text")
+      !e.target.classList.contains("custom-select__select-options__option") && !e.target.classList.contains("custom-select__select-options") &&
+      !e.target.classList.contains("custom-select__selected-text") && !e.target.classList.contains("custom-select__selected-text active") && !e.target.classList.contains("custom-select")
     ) {
       setShowOptionList(false);
     }
@@ -33,12 +33,14 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   return (
     <div className="custom-select">
       <div
+        tabIndex={0}
         className={
           showOptionList
             ? "custom-select__selected-text active"
             : "custom-select__selected-text"
         }
         onClick={displayList}
+        onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space')?displayList():(e.key === 'Escape' || e.key === 'Backspace')?setShowOptionList(false): ""  }}
       >
         <Image
           src={`https://flagcdn.com/16x12/${
@@ -57,10 +59,12 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                 data-name={option[0] + "/" + option[1]}
                 data-value={option[0]}
                 key={index}
-                onClick={handleOptionList}
+                tabIndex={0}
+                onClick={(e) => handleOptionList(e)}
+                onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space') ? handleOptionList(e):(e.key === 'Escape' || e.key === 'Backspace')?displayList(): "" }}
               >
                 <Image
-                  src={`https://flagcdn.com/16x12/${
+                  src={`https://flagcdn.com/48x36/${
                     option[0].charAt(0).toLowerCase() +
                     option[0].charAt(1).toLowerCase()
                   }.png`}

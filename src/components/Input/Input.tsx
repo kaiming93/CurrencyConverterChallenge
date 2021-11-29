@@ -4,8 +4,10 @@ import Error from '../Error/Error'
 
 const Input: React.FC<IInputProps> = (props: any) => {
   const preventInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    let reg = new RegExp('[0-9Backspace]');
-    !reg.test(e.key) && e.preventDefault();
+    let reg = new RegExp('[0-9]');
+    console.log(e.key)
+    !reg.test(e.key) && !(e.key === "Backspace" || e.key === "Tab" || e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") && e.preventDefault();
+    //(e.currentTarget.value.indexOf('.') === 0) && (e.key === '.') && e.preventDefault();
   }
   return (
     <div className="input">
@@ -15,6 +17,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
         onChange={(event) => props.setValue(event.target.value)}
         onKeyDown={(event) => {
           props.type === "number" && preventInvalidChar(event);
+          event.key === "Enter" && props.triggerFunc()
         }}
         title={props.title}
         maxLength={props.maxLength}
