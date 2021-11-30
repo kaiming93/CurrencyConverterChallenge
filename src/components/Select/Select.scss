@@ -1,6 +1,6 @@
 .custom-select {
   display: inline-block;
-  min-width: 250px;
+  width: 100%;
   text-align: center;
   position: relative;
   margin-bottom: 20px;
@@ -8,6 +8,8 @@
     padding: 6px 20px;
     background-color: lightskyblue;
     border: 1px solid lightskyblue;
+    display: flex;
+    cursor: pointer;
     &:hover {
       background-color: lightseagreen;
       color: white;

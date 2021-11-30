@@ -30,7 +30,7 @@ const CurrencyConverter = () => {
   return (
     <div className="currency-converter">
       <h1>Currency Converter</h1>
-      <Input title="input" type="number" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
+      <Input title="input" error={true} type="number" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
       <Select title="select" value={firstCountry} defaultText={'GBP/British Pound Sterling'} setValue={setFirstCountry} options={countries} />
       <Select title="select" value={secondCountry} defaultText={'EUR/Euro'} setValue={setSecondCountry} options={countries} />
       <Button

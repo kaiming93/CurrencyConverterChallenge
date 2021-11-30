@@ -7,13 +7,13 @@ const Input: React.FC<IInputProps> = (props: any) => {
     let reg = new RegExp('[0-9]');
     console.log(e.key)
     !reg.test(e.key) && !(e.key === "Backspace" || e.key === "Tab" || e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "ArrowDown") && e.preventDefault();
-    //(e.currentTarget.value.indexOf('.') === 0) && (e.key === '.') && e.preventDefault();
   }
   return (
     <div className="input">
       {props.label && <label>{props.label}</label>}
       <input
         type="text"
+        onClick={(event) => props.clickFunc(event)}
         onChange={(event) => props.setValue(event.target.value)}
         onKeyDown={(event) => {
           props.type === "number" && preventInvalidChar(event);
@@ -22,7 +22,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
         title={props.title}
         maxLength={props.maxLength}
       />
-      {props.value === undefined && <Error errorMsg="Please enter a value"/>}
+      {props.value === undefined && props.error && <Error errorMsg="Please enter a value"/>}
     </div>
   );
 };

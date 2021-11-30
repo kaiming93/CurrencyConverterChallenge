@@ -1,6 +1,7 @@
 import React from "react";
 import { ISelectProps } from "./ISelect";
 import Image from "../Image/Image";
+import Search from '../Search/Search'
 
 const Select: React.FC<ISelectProps> = (props: any) => {
   const [selectedText, setSelectedText] = React.useState<any>(
@@ -10,8 +11,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
 
   const handleClickEvent = (e: any) => {
     if (
-      !e.target.classList.contains("custom-select__select-options__option") && !e.target.classList.contains("custom-select__select-options") &&
-      !e.target.classList.contains("custom-select__selected-text") && !e.target.classList.contains("custom-select__selected-text active") && !e.target.classList.contains("custom-select")
+      !e.target.classList.contains("blur")
     ) {
       setShowOptionList(false);
     }
@@ -21,9 +21,9 @@ const Select: React.FC<ISelectProps> = (props: any) => {
     setShowOptionList(!showOptionList);
   };
 
-  const handleOptionList = (e: any) => {
-    setSelectedText(e.target.getAttribute("data-name"));
-    props.setValue(e.target.getAttribute("data-value"));
+  const handleOptionList = (name:any, value:any) => {
+    setSelectedText(name);
+    props.setValue(value);
     setShowOptionList(false);
   };
   React.useEffect(() => {
@@ -31,46 +31,49 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   });
 
   return (
-    <div className="custom-select">
+    <div className="custom-select blur">
       <div
         tabIndex={0}
         className={
           showOptionList
-            ? "custom-select__selected-text active"
-            : "custom-select__selected-text"
+            ? "custom-select__selected-text active blur"
+            : "custom-select__selected-text blur"
         }
         onClick={displayList}
         onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space')?displayList():(e.key === 'Escape' || e.key === 'Backspace')?setShowOptionList(false): ""  }}
       >
         <Image
-          src={`https://flagcdn.com/16x12/${
+          src={`https://flagcdn.com/48x36/${
             props.value.charAt(0).toLowerCase() +
             props.value.charAt(1).toLowerCase()
           }.png`}
         />
-        {selectedText}
+         {selectedText} 
       </div>
       {showOptionList && (
-        <ul className="custom-select__select-options">
+        <ul className="custom-select__select-options blur">
+          <Search />
           {props.options.map((option: any, index: number) => {
+            const name = option[0] + "/" + option[1];
+            const value = option[0];
             return (
               <li
-                className="custom-select__select-options__option"
-                data-name={option[0] + "/" + option[1]}
-                data-value={option[0]}
+                className="custom-select__select-options__option blur"
+                data-name={name}
+                data-value={value}
                 key={index}
                 tabIndex={0}
-                onClick={(e) => handleOptionList(e)}
-                onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space') ? handleOptionList(e):(e.key === 'Escape' || e.key === 'Backspace')?displayList(): "" }}
+                onClick={() => handleOptionList(name, value)}
+                onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space') ? handleOptionList(name, value):(e.key === 'Escape' || e.key === 'Backspace')?displayList(): "" }}
               >
                 <Image
                   src={`https://flagcdn.com/48x36/${
-                    option[0].charAt(0).toLowerCase() +
-                    option[0].charAt(1).toLowerCase()
+                    value.charAt(0).toLowerCase() +
+                    value.charAt(1).toLowerCase()
                   }.png`}
                 />
-                <div>
-                  {option[0]}/{option[1]}
+                <div className="blur">
+                  {name}
                 </div>
               </li>
             );
