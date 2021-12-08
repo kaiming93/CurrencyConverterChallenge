@@ -1,46 +1,54 @@
 import React from "react";
 import { ISelectProps } from "./ISelect";
 import Image from "../Image/Image";
-import Search from '../Search/Search'
+import Input from "../Input/Input";
 
 const Select: React.FC<ISelectProps> = (props: any) => {
   const [selectedText, setSelectedText] = React.useState<any>(
     props.defaultText
   );
-  const [showOptionList, setShowOptionList] = React.useState<any>(Boolean);
-
+  const [filteredOptions, setFilteredOptions] = React.useState<any>([]);
   const handleClickEvent = (e: any) => {
-    if (
-      !e.target.classList.contains("blur")
-    ) {
-      setShowOptionList(false);
+    if (!e.target.classList.contains("blur")) {
+      props.setSelectState([false, false]);
     }
   };
 
   const displayList = () => {
-    setShowOptionList(!showOptionList);
+    props.index === 0
+      ? props.setSelectState([!props.selectState[0], false])
+      : props.setSelectState([false, !props.selectState[1]]);
+      setFilteredOptions(props.options)
   };
 
-  const handleOptionList = (name:any, value:any) => {
+  const handleOptionList = (name: any, value: any) => {
     setSelectedText(name);
     props.setValue(value);
-    setShowOptionList(false);
+    props.setSelectState([false, false]);
   };
   React.useEffect(() => {
-    document.addEventListener("mousedown", handleClickEvent);
-  });
+    setFilteredOptions(props.options)
+    // document.addEventListener("mousedown", handleClickEvent);
+  },[props.options]);
 
   return (
     <div className="custom-select blur">
+      {console.log(filteredOptions, "<<<<<", props.options)}
       <div
         tabIndex={0}
         className={
-          showOptionList
+          props.selectState[props.index]
             ? "custom-select__selected-text active blur"
             : "custom-select__selected-text blur"
         }
         onClick={displayList}
-        onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space')?displayList():(e.key === 'Escape' || e.key === 'Backspace')?setShowOptionList(false): ""  }}
+        onKeyDown={(e) => {
+          e.key === "Enter" || e.key === "Space"
+            ? displayList()
+            : e.key === "Escape" || e.key === "Backspace"
+            ? props.setSelectState([false, false])
+            : "";
+        }}
       >
         <Image
           src={`https://flagcdn.com/48x36/${
@@ -48,12 +56,12 @@ const Select: React.FC<ISelectProps> = (props: any) => {
             props.value.charAt(1).toLowerCase()
           }.png`}
         />
-         {selectedText} 
+        {selectedText}
       </div>
-      {showOptionList && (
+      {props.selectState[props.index] && (
         <ul className="custom-select__select-options blur">
-          <Search />
-          {props.options.map((option: any, index: number) => {
+          <div className="search"><Input type="search" error={false} options={props.options} setOptions={props.setOptions} setFilteredOptions={setFilteredOptions}/></div>
+          {filteredOptions.map((option: any, index: number) => {
             const name = option[0] + "/" + option[1];
             const value = option[0];
             return (
@@ -64,7 +72,13 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                 key={index}
                 tabIndex={0}
                 onClick={() => handleOptionList(name, value)}
-                onKeyDown={(e) => {(e.key === 'Enter' || e.key === 'Space') ? handleOptionList(name, value):(e.key === 'Escape' || e.key === 'Backspace')?displayList(): "" }}
+                onKeyDown={(e) => {
+                  e.key === "Enter" || e.key === "Space"
+                    ? handleOptionList(name, value)
+                    : e.key === "Escape" || e.key === "Backspace"
+                    ? displayList()
+                    : "";
+                }}
               >
                 <Image
                   src={`https://flagcdn.com/48x36/${
@@ -72,9 +86,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                     value.charAt(1).toLowerCase()
                   }.png`}
                 />
-                <div className="blur">
-                  {name}
-                </div>
+                <div className="blur">{name}</div>
               </li>
             );
           })}

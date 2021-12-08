@@ -3,3 +3,11 @@
     flex-direction: column;
     margin-bottom: 20px;
 }
+
+.search {
+    position: relative;
+    .input {
+        margin-bottom: 0;
+        padding: 0;
+    }
+}

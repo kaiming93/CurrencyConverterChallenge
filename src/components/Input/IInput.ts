@@ -3,9 +3,13 @@ export interface IInputProps {
     setValue?: any;
     label?: string;
     value?: number|undefined|"";
-    type: 'number'|'text';
+    type: 'number'|'text'|'search';
     maxLength?: number|undefined;
     clickFunc?: any;
     triggerFunc?: any;
     error?:any;
+    options?:any;
+    setOptions?:any;
+    filteredOptions?: any;
+    setFilteredOptions?: any;
   }

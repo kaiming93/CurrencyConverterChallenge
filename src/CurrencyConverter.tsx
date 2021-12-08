@@ -12,6 +12,7 @@ const CurrencyConverter = () => {
   const [previousResult, setPreviousResult] = React.useState<any>(undefined);
   const [firstCountry, setFirstCountry] = React.useState<any>('GBP');
   const [secondCountry, setSecondCountry] = React.useState<any>('EUR');
+  const [selectState, setSelectState] = React.useState<Array<boolean>>([false, false]);
   const [result, setResult] = React.useState<any>(undefined);
   const calculateResult = () => {
     let result = Number(amount) * Number(rates.rates[secondCountry])/Number(rates.rates[firstCountry])
@@ -30,9 +31,9 @@ const CurrencyConverter = () => {
   return (
     <div className="currency-converter">
       <h1>Currency Converter</h1>
-      <Input title="input" error={true} type="number" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
-      <Select title="select" value={firstCountry} defaultText={'GBP/British Pound Sterling'} setValue={setFirstCountry} options={countries} />
-      <Select title="select" value={secondCountry} defaultText={'EUR/Euro'} setValue={setSecondCountry} options={countries} />
+      <Input title="input" error={true} type="text" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
+      <Select index={0} title="select" value={firstCountry} defaultText={'GBP/British Pound Sterling'} setValue={setFirstCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
+      <Select index={1} title="select" value={secondCountry} defaultText={'EUR/Euro'} setValue={setSecondCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
       <Button
         title="Calculate"
         clickFunc={calculateResult}
