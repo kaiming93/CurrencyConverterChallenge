@@ -1,8 +1,9 @@
 import React from 'react';
-import {render} from '@testing-library/react'
+import {render,screen} from '@testing-library/react'
 import Error from './Error'
+import '@testing-library/jest-dom/extend-expect';
 
-test('returns true', () => {
+test('loads and displays an error', () => {
   render(<Error errorMsg="enter a value"/>)
-  expect(true).toBe(true)
+  expect(screen.getByTestId('error')).toBeTruthy();
 })

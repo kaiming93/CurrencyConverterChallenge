@@ -5,7 +5,7 @@ import logo from '../../img/No_image.svg'
 const Image: React.FC<IImageProps> = (props: any) => {
   const [failed, setFailed] = React.useState<any>(false);
   return (
-    <div className="image blur">
+    <div className="image blur" data-testid="image">
       {failed ? (
          <img src={logo} width="48px"/>
       ) : (

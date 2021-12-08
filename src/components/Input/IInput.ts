@@ -12,4 +12,5 @@ export interface IInputProps {
     setOptions?:any;
     filteredOptions?: any;
     setFilteredOptions?: any;
+    placeholder?:any;
   }

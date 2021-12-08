@@ -32,8 +32,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   },[props.options]);
 
   return (
-    <div className="custom-select blur">
-      {console.log(filteredOptions, "<<<<<", props.options)}
+    <div className="custom-select blur" data-testid="select">
       <div
         tabIndex={0}
         className={
@@ -60,8 +59,8 @@ const Select: React.FC<ISelectProps> = (props: any) => {
       </div>
       {props.selectState[props.index] && (
         <ul className="custom-select__select-options blur">
-          <div className="search"><Input type="search" error={false} options={props.options} setOptions={props.setOptions} setFilteredOptions={setFilteredOptions}/></div>
-          {filteredOptions.map((option: any, index: number) => {
+          <div className="search"><Input type="search" error={false} placeholder="Search..." options={props.options} setOptions={props.setOptions} setFilteredOptions={setFilteredOptions}/></div>
+          {filteredOptions.length > 0? filteredOptions.map((option: any, index: number) => {
             const name = option[0] + "/" + option[1];
             const value = option[0];
             return (
@@ -89,7 +88,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                 <div className="blur">{name}</div>
               </li>
             );
-          })}
+          }): <li className="custom-select__select-options__option blur">No result :(</li>}
         </ul>
       )}
     </div>

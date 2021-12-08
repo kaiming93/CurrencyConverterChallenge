@@ -1,9 +1,10 @@
 import React from 'react';
-import {render} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import Button from './Button'
+import '@testing-library/jest-dom/extend-expect';
 
-test('returns true', () => {
+test('loads and displays a button', () => {
   const mockClick = jest.fn;
   render(<Button title="button" clickFunc={mockClick}/>)
-  expect(true).toBe(true)
+  expect(screen.getByTestId('button')).toBeTruthy();
 })

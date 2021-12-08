@@ -1,9 +1,10 @@
 import React from 'react';
-import {render} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import Input from './Input'
+import '@testing-library/jest-dom/extend-expect';
 
-test('returns true', () => {
+test('loads and displays input', () => {
   const mockValue = jest.fn;
-  render(<Input title="input" setValue={mockValue}/>)
-  expect(true).toBe(true)
+  render(<Input type="text" title="input" setValue={mockValue}/>)
+  expect(screen.getByTestId('input')).toBeTruthy();
 })
