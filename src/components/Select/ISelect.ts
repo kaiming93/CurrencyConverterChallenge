@@ -8,5 +8,6 @@ export interface ISelectProps {
     defaultValue?: any;
     selectState?: any;
     setSelectState?: any;
+    setDefaultText?:any;
     value?: string;
   }

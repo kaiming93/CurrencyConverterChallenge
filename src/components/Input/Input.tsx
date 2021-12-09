@@ -4,7 +4,7 @@ import Error from "../Error/Error";
 
 const Input: React.FC<IInputProps> = (props: any) => {
   const preventInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    let reg = new RegExp("[0-9]");
+    let reg = new RegExp("[0-9.]");
     !reg.test(e.key) &&
       !(
         e.key === "Backspace" ||
@@ -32,9 +32,10 @@ const Input: React.FC<IInputProps> = (props: any) => {
     props.setFilteredOptions(newArr);
   };
   return (
-    <div className="input" data-testid="input">
+    <div className={props.type === "search"?"input blur":"input"} data-testid="input">
       {props.label && <label>{props.label}</label>}
       <input
+        className={props.type === "search"?"blur":""}
         data-testid="input-tag"
         type={props.type === "number"?"text":props.type}
         onClick={(event) => props.type !== "search" && props.clickFunc(event)}
@@ -51,9 +52,11 @@ const Input: React.FC<IInputProps> = (props: any) => {
         maxLength={props.maxLength}
         placeholder={props.placeholder}
       />
-      {props.value === undefined && props.error && (
+      {props.value === undefined && props.error? (
         <Error errorMsg="Please enter a value" />
-      )}
+      ): isNaN(props.value) && props.error?(
+        <Error errorMsg={`${props.value} isn't a valid number`} />
+      ):""}
     </div>
   );
 };

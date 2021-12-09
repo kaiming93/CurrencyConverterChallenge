@@ -4,13 +4,12 @@ import logo from '../../img/No_image.svg'
 
 const Image: React.FC<IImageProps> = (props: any) => {
   const [failed, setFailed] = React.useState<any>(false);
+  React.useEffect(() => {
+    setFailed(false)
+  }, []);
   return (
     <div className="image blur" data-testid="image">
-      {failed ? (
-         <img data-testid="invalid-image" className="image_invalid blur" src={logo} width="48px"/>
-      ) : (
-        <img data-testid="valid-image" className="image_valid blur" src={props.src} onError={() => setFailed(true)} />
-      )}
+        <img data-testid="image" className="image_valid blur" src={failed?logo:props.src} width="48px" onError={(e) => { e?setFailed(true):setFailed(false)} }/>
     </div>
   );
 };
