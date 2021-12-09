@@ -16,19 +16,27 @@ const Input: React.FC<IInputProps> = (props: any) => {
       ) &&
       e.preventDefault();
   };
-  const searchFunc = (event:any) => {
-    let newArr = props.options.filter((array:any) => {
-        if (String(array[0]).toLowerCase().includes(String(event.target.value).toLowerCase()) || String(array[1]).toLowerCase().includes(String(event.target.value).toLowerCase())){
-          return true;
-        }
-    })
-    props.setFilteredOptions(newArr)
+  const searchFunc = (event: any) => {
+    let newArr = props.options.filter((array: any) => {
+      if (
+        String(array[0])
+          .toLowerCase()
+          .includes(String(event.target.value).toLowerCase()) ||
+        String(array[1])
+          .toLowerCase()
+          .includes(String(event.target.value).toLowerCase())
+      ) {
+        return true;
+      }
+    });
+    props.setFilteredOptions(newArr);
   };
   return (
     <div className="input" data-testid="input">
       {props.label && <label>{props.label}</label>}
       <input
-        type={props.type}
+        data-testid="input-tag"
+        type={props.type === "number"?"text":props.type}
         onClick={(event) => props.type !== "search" && props.clickFunc(event)}
         onChange={
           props.type !== "search"
@@ -36,8 +44,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
             : (event) => searchFunc(event)
         }
         onKeyDown={(event) => {
-          props.type !== "search" &&
-            preventInvalidChar(event);
+          props.type === "number" && preventInvalidChar(event);
           event.key === "Enter" && props.triggerFunc();
         }}
         title={props.title}

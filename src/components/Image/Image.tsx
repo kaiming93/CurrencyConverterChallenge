@@ -7,9 +7,9 @@ const Image: React.FC<IImageProps> = (props: any) => {
   return (
     <div className="image blur" data-testid="image">
       {failed ? (
-         <img src={logo} width="48px"/>
+         <img data-testid="invalid-image" className="image_invalid blur" src={logo} width="48px"/>
       ) : (
-        <img src={props.src} onError={() => setFailed(true)} />
+        <img data-testid="valid-image" className="image_valid blur" src={props.src} onError={() => setFailed(true)} />
       )}
     </div>
   );

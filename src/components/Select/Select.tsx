@@ -23,7 +23,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
 
   const handleOptionList = (name: any, value: any) => {
     setSelectedText(name);
-    props.setValue(value);
+    props.index === 0? props.setValue([value, props.value[1]]):props.setValue([props.value[0], value]);
     props.setSelectState([false, false]);
   };
   React.useEffect(() => {
@@ -34,6 +34,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   return (
     <div className="custom-select blur" data-testid="select">
       <div
+        data-testid="select-tag"
         tabIndex={0}
         className={
           props.selectState[props.index]
@@ -51,8 +52,8 @@ const Select: React.FC<ISelectProps> = (props: any) => {
       >
         <Image
           src={`https://flagcdn.com/48x36/${
-            props.value.charAt(0).toLowerCase() +
-            props.value.charAt(1).toLowerCase()
+            props.value[props.index].charAt(0).toLowerCase() +
+            props.value[props.index].charAt(1).toLowerCase()
           }.png`}
         />
         {selectedText}
