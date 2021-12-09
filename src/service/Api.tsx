@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { act } from 'react-dom/test-utils';
 
 export const getRates = (setRates:any) => {
     axios
@@ -7,7 +8,9 @@ export const getRates = (setRates:any) => {
         "Content-Type": "application/json"
       },
     }).then(response => {
-      setRates(response.data);
+      act(()=>{
+        setRates(response.data);
+      })
     }).catch(ex => {
       const error =
       ex.response.status === 404
@@ -24,7 +27,9 @@ export const getCountries = (setCountries:any) => {
         "Content-Type": "application/json"
       },
     }).then(response => {
+      act(()=>{
       setCountries(Object.keys(response.data).map((key) => [key, response.data[key]]));
+      })
     }).catch(ex => {
       const error =
       ex.response.status === 404
