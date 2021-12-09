@@ -18,12 +18,12 @@ const CurrencyConverter = () => {
   const [previousResult, setPreviousResult] = React.useState<string|undefined>(undefined);
   const [result, setResult] = React.useState<string|undefined>(undefined);
   const calculateResult = (event:any) => {
-    let result = Number(amount) * Number(rates.rates[country[1].key])/Number(rates.rates[country[0].key])
     if (amount === ""){
       setAmount(undefined)
     } if (!amount || isNaN(amount)) {
-      event?.preventDefault()
+      event.preventDefault()
     } else {
+      let result = Number(amount) * Number(rates.rates[country[1].key])/Number(rates.rates[country[0].key])
       setCounter(600);
       setPreviousCountry(country)
       setPreviousAmount(amount);
@@ -45,8 +45,9 @@ const CurrencyConverter = () => {
       <Input title="input" error={true} type="number" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
       <Button
         logo={logo}
+        logoWidth="30px"
         clickFunc={swapSelect}
-        className="swap"
+        className="button swap"
       />   
       </div>
       <Select index={0} title="select" value={country} setValue={setCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
@@ -54,7 +55,7 @@ const CurrencyConverter = () => {
       <Button
         title="Calculate"
         clickFunc={calculateResult}
-        className="calculate"
+        className="button calculate"
       />
       {result && (
         <div>

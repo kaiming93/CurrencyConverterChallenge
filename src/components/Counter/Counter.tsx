@@ -1,7 +1,7 @@
 import React from "react";
 import { ICounterProps } from "./ICounter";
 
-const Counter: React.FC<ICounterProps> = (props: any) => {
+const Counter: React.FC<ICounterProps> = (props: ICounterProps) => {
   React.useEffect(() => {
     props.counter === 0 && props.setResult(undefined);  
     const timerId = setInterval(() => props.setCounter(props.counter - 1), 1000);

@@ -2,7 +2,7 @@ import React from "react";
 import { IInputProps } from "./IInput";
 import Error from "../Error/Error";
 
-const Input: React.FC<IInputProps> = (props: any) => {
+const Input: React.FC<IInputProps> = (props: IInputProps) => {
   const preventInvalidChar = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let reg = new RegExp("[0-9.]");
     !reg.test(e.key) &&
@@ -17,7 +17,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
       e.preventDefault();
   };
   const searchFunc = (event: any) => {
-    let newArr = props.options.filter((array: any) => {
+    let newArr = props.options?.filter((array: any) => {
       if (
         String(array[0])
           .toLowerCase()
@@ -29,7 +29,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
         return true;
       }
     });
-    props.setFilteredOptions(newArr);
+    props.setFilteredOptions && props.setFilteredOptions(newArr);
   };
   return (
     <div className={`input ${props.className}`} data-testid="input">
@@ -39,12 +39,12 @@ const Input: React.FC<IInputProps> = (props: any) => {
         type={props.type === "number"?"text":props.type}
         onChange={
           props.type !== "search"
-            ? (event) => props.setValue(event.target.value)
+            ? (event) => props.setValue && props.setValue(event.target.value)
             : (event) => searchFunc(event)
         }
         onKeyDown={(event) => {
           props.type === "number" && preventInvalidChar(event);
-          event.key === "Enter" && props.triggerFunc();
+          event.key === "Enter" && props.triggerFunc && props.triggerFunc(event);
         }}
         title={props.title}
         maxLength={props.maxLength}

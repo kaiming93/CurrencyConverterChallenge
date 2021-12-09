@@ -2,8 +2,9 @@ import React from "react";
 import { ISelectProps } from "./ISelect";
 import Image from "../Image/Image";
 import Input from "../Input/Input";
+import Button from "../Button/Button";
 
-const Select: React.FC<ISelectProps> = (props: any) => {
+const Select: React.FC<ISelectProps> = (props: ISelectProps) => {
   const [filteredOptions, setFilteredOptions] = React.useState<Array<JSX.Element | Array<any>>>([]);
   const handleClickEvent = (e: any) => {
     const element = [...document.getElementsByClassName("custom-select")];
@@ -39,32 +40,27 @@ const Select: React.FC<ISelectProps> = (props: any) => {
 
   return (
     <div className="custom-select" id={`custom-select${props.index}`} data-testid="select">
-      <div
-        data-testid="select-tag"
-        tabIndex={0}
-        className={
-          props.selectState[props.index]
-            ? "custom-select__selected-text active"
-            : "custom-select__selected-text"
-        }
-        onClick={displayList}
-        onKeyDown={(e) => {
+      <Button clickFunc={displayList}
+        keyDown={(e:any) => {
+          console.log(e, '<<<<')
           e.key === "Enter" || e.key === "Space"
             ? displayList()
             : e.key === "Escape" || e.key === "Backspace"
             ? props.setSelectState([false, false])
             : "";
         }}
-      >
-        <Image
-          src={`https://flagcdn.com/48x36/${
-            props.value[props.index].key.charAt(0).toLowerCase() +
-            props.value[props.index].key.charAt(1).toLowerCase()
-          }.png`}
-          width="48px"
+        logo={`https://flagcdn.com/48x36/${
+          props.value[props.index].key.charAt(0).toLowerCase() +
+          props.value[props.index].key.charAt(1).toLowerCase()
+        }.png`}
+        logoWidth="48px"
+        title={props.value[props.index].name}
+        className={
+          props.selectState[props.index]
+            ? "custom-select__selected-text active"
+            : "custom-select__selected-text"
+        }
         />
-        {props.value[props.index].name}
-      </div>
       {props.selectState[props.index] && (
         <ul
           className="custom-select__select-options"
