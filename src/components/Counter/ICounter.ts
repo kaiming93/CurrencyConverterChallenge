@@ -1,7 +1,6 @@
 export interface ICounterProps {
-    title: string;
-    setResult: any;
-    result: any;
-    counter: any;
-    setCounter: any;
+    title?: string;
+    setResult: (event:any) => void;
+    counter: number;
+    setCounter: (event:any) => void;
   }

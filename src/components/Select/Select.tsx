@@ -78,6 +78,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
               placeholder="Search..."
               options={props.options}
               setOptions={props.setOptions}
+              className="search"
               setFilteredOptions={setFilteredOptions}
             />
           </div>
@@ -114,8 +115,8 @@ const Select: React.FC<ISelectProps> = (props: any) => {
               );
             })
           ) : (
-            <li className="custom-select__select-options__option">
-              No result :(
+            <li className="custom-select__select-options__option noresult">
+              <p>No result :(</p>
             </li>
           )}
         </ul>

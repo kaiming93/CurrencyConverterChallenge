@@ -10,7 +10,8 @@
     border: 1px solid darkgreen;
     display: flex;
     cursor: pointer;
-    //border-radius: 5px;
+    font-size: 18px;
+    text-align: left;
     &:hover {
       background-color: green;
       color: white;
@@ -49,6 +50,7 @@
       border-left: 1px solid darkgreen;
       cursor: pointer;
       display: flex;
+      font-size: 18px;
       &:hover {
         background-color: green;
         color: white;

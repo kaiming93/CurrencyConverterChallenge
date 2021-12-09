@@ -10,7 +10,7 @@ const Counter: React.FC<ICounterProps> = (props: any) => {
 
   return (
     <div data-testid="counter" className="counter">
-      Expire in {props.counter} sec
+      Expire in {Math.floor(props.counter / 60) + ":" + (props.counter % 60 ? props.counter % 60 : '00')}
     </div>
   );
 };

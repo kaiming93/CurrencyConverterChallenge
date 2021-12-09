@@ -32,7 +32,7 @@ const Input: React.FC<IInputProps> = (props: any) => {
     props.setFilteredOptions(newArr);
   };
   return (
-    <div className="input" data-testid="input">
+    <div className={`input ${props.className}`} data-testid="input">
       {props.label && <label>{props.label}</label>}
       <input
         data-testid="input-tag"

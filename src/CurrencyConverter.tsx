@@ -7,7 +7,7 @@ import { getRates, getCountries } from "./service/Api";
 import logo from './img/swap.svg'
 
 const CurrencyConverter = () => {
-  const [counter, setCounter] = React.useState<number>(10);
+  const [counter, setCounter] = React.useState<number>(600);
   const [rates, setRates] = React.useState<any>([]);
   const [countries, setCountries] = React.useState<any>([]);
   const [previousAmount, setPreviousAmount] = React.useState<any>(undefined);
@@ -24,7 +24,7 @@ const CurrencyConverter = () => {
     } if (!amount || isNaN(amount)) {
       event?.preventDefault()
     } else {
-      setCounter(10);
+      setCounter(600);
       setPreviousCountry(country)
       setPreviousAmount(amount);
       setPreviousResult(result.toFixed(2));
@@ -59,7 +59,7 @@ const CurrencyConverter = () => {
       {result && (
         <div>
           <h2>{Number(previousAmount)} {previousCountry[0].key} equals {previousResult} {previousCountry[1].key}</h2>
-          <Counter title="counter" counter={counter} setCounter={setCounter} setResult={setResult} result={result}/>
+          <Counter title="counter" counter={counter} setCounter={setCounter} setResult={setResult}/>
         </div>
         
       )}
