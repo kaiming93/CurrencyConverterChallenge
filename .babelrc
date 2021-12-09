@@ -1,4 +1,7 @@
 {
+  "production": {
+    "plugins": [["react-remove-properties", { "properties": ["data-testid"] }]]
+  },
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
@@ -11,12 +14,5 @@
         "regenerator": true
       }
     ]
-  ],
-  "env": {
-    "production": {
-      "plugins": [
-        ["react-remove-properties", { "properties": ["data-testid"] }]
-      ]
-    }
-  }
+  ]
 }
