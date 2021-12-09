@@ -9,11 +9,11 @@ import logo from './img/swap.svg'
 const CurrencyConverter = () => {
   const [counter, setCounter] = React.useState<number>(600);
   const [rates, setRates] = React.useState<any>([]);
-  const [countries, setCountries] = React.useState<any>([]);
+  const [countries, setCountries] = React.useState<Array<JSX.Element | any>>([]);
   const [previousAmount, setPreviousAmount] = React.useState<number|undefined|"">(undefined);
   const [amount, setAmount] = React.useState<number|undefined|"">("");
-  const [previousCountry, setPreviousCountry] = React.useState<any>([{key:'GBP', name:'GBP/British Pound Sterling'},{key:'EUR',name:'EUR/Euro'}]);
-  const [country, setCountry] = React.useState<any>([{key:'GBP', name:'GBP/British Pound Sterling'},{key:'EUR',name:'EUR/Euro'}]);
+  const [previousCountry, setPreviousCountry] = React.useState<Array<JSX.Element | any>>([{key:'GBP', name:'GBP/British Pound Sterling'},{key:'EUR',name:'EUR/Euro'}]);
+  const [country, setCountry] = React.useState<Array<JSX.Element | any>>([{key:'GBP', name:'GBP/British Pound Sterling'},{key:'EUR',name:'EUR/Euro'}]);
   const [selectState, setSelectState] = React.useState<Array<boolean>>([false, false]);
   const [previousResult, setPreviousResult] = React.useState<string|undefined>(undefined);
   const [result, setResult] = React.useState<string|undefined>(undefined);

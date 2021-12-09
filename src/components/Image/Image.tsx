@@ -9,7 +9,7 @@ const Image: React.FC<IImageProps> = (props: any) => {
   },[props.src]);
   return (
     <div className="image" data-testid="image">
-        <img data-testid="image" className="image_valid" src={failed?logo:props.src} width={props.width} onError={() => { setFailed(true)} }/>
+        <img className="image_valid" src={failed?logo:props.src} width={props.width} onError={() => { setFailed(true)} }/>
     </div>
   );
 };

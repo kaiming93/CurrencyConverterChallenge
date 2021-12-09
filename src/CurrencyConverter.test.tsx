@@ -10,7 +10,7 @@ describe("loads and displays currency converter", () => {
 test('loads and show result', () => {
   render(<CurrencyConverter />)
   expect(screen.getByTestId('currency-converter')).toBeInTheDocument();
-  expect(screen.getByTestId('item')).toBeInTheDocument();
+  //expect(screen.getByTestId('item')).toBeInTheDocument();
   //const buttonElement = screen.getByRole("button", { name: /Calculate/i} );
   //expect(buttonElement).toBeInTheDocument();
   //fireEvent.click(buttonElement);

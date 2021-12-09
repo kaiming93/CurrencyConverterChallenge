@@ -10,11 +10,27 @@ describe("loads and displays a select", () => {
       <Select
         index={0}
         title="select"
-        value={["GBP","EUR"]}
+        value={[
+          {
+            key: "GBP",
+            name: "GBP/British Pound Sterling",
+          },
+          {
+            key: "EUR",
+            name: "EUR/Euro",
+          },
+        ]}
         setValue={mockFunc}
         selectState={[false, false]}
         setSelectState={mockFunc}
-        options={[["key1", "value1"],["key2", "value2"],["key3", "value3"]]}
+        options={[
+          ["AED", "United Arab Emirates Dirham"],
+          ["AFN", "Afghan Afghani"],
+          ["ALL", "Albanian Lek"],
+          ["AMD", "Armenian Dram"],
+          ["ANG", "Netherlands Antillean Guilder"],
+          ["AOA", "Angolan Kwanza"],
+        ]}
         setOptions={mockFunc}
       />
     );
@@ -40,10 +56,18 @@ describe("loads and displays a select", () => {
   });
   test("should be able to trigger the select on keydown and select item", () => {
     const { selectElement } = setup();
-    fireEvent.keyDown(selectElement, {key: 'Enter', code: 'Enter', charCode: 13})
+    fireEvent.keyDown(selectElement, {
+      key: "Enter",
+      code: "Enter",
+      charCode: 13,
+    });
     const listElement = screen.getByTestId("select-tag");
     expect(listElement).toBeInTheDocument();
-    fireEvent.keyDown(listElement, {key: 'Enter', code: 'Enter', charCode: 13})
+    fireEvent.keyDown(listElement, {
+      key: "Enter",
+      code: "Enter",
+      charCode: 13,
+    });
     //expect((selectElement as HTMLInputElement).value).toBe("Testing");
-  }); 
+  });
 });
