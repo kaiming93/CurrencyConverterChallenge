@@ -17,4 +17,13 @@
     background-color: #0b220b;
     border-color: #0b220b;
   }
+  &.swap {
+    background-color: #c4ebc4;
+    min-width: unset;
+    padding: 0 10px 0 10px;
+    margin: auto 0 20px auto;
+    .image {
+      padding: 0;
+    }
+  }
 }

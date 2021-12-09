@@ -1,4 +1,6 @@
 export interface IButtonProps {
-    title: string;
+    title?: string;
+    logo?: any;
     clickFunc: any;
+    className: any;
   }

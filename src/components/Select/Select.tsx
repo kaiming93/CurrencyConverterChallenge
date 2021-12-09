@@ -61,6 +61,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
             props.value[props.index].key.charAt(0).toLowerCase() +
             props.value[props.index].key.charAt(1).toLowerCase()
           }.png`}
+          width="48px"
         />
         {props.value[props.index].name}
       </div>
@@ -106,6 +107,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                       value.charAt(0).toLowerCase() +
                       value.charAt(1).toLowerCase()
                     }.png`}
+                    width="48px"
                   />
                   <div>{name}</div>
                 </li>

@@ -5,6 +5,6 @@ import '@testing-library/jest-dom/extend-expect';
 
 test('loads and displays a button', () => {
   const mockClick = jest.fn;
-  render(<Button title="button" clickFunc={mockClick}/>)
+  render(<Button title="button" className="button" clickFunc={mockClick}/>)
   expect(screen.getByTestId('button')).toBeInTheDocument();;
 })

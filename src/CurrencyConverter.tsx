@@ -4,6 +4,7 @@ import Select from "./components/Select/Select";
 import Button from "./components/Button/Button";
 import Counter from "./components/Counter/Counter";
 import { getRates, getCountries } from "./service/Api";
+import logo from './img/swap.svg'
 
 const CurrencyConverter = () => {
   const [counter, setCounter] = React.useState<number>(10);
@@ -17,13 +18,13 @@ const CurrencyConverter = () => {
   const [previousResult, setPreviousResult] = React.useState<any>(undefined);
   const [result, setResult] = React.useState<any>(undefined);
   const calculateResult = (event:any) => {
-    setCounter(10);
     let result = Number(amount) * Number(rates.rates[country[1].key])/Number(rates.rates[country[0].key])
     if (amount === ""){
       setAmount(undefined)
     } if (!amount || isNaN(amount)) {
       event?.preventDefault()
     } else {
+      setCounter(10);
       setPreviousCountry(country)
       setPreviousAmount(amount);
       setPreviousResult(result.toFixed(2));
@@ -40,16 +41,20 @@ const CurrencyConverter = () => {
   return (
     <div data-testid="currency-converter" className="currency-converter">
       <h1>Currency Converter</h1>
+      <div className="currency-converter__input">
       <Input title="input" error={true} type="number" value={amount} maxLength={20} setValue={setAmount} label="Your currency amount" triggerFunc={calculateResult}/>
-      <Select index={0} title="select" value={country} setValue={setCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
       <Button
-        title="Swap"
+        logo={logo}
         clickFunc={swapSelect}
-      />
+        className="swap"
+      />   
+      </div>
+      <Select index={0} title="select" value={country} setValue={setCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
       <Select index={1} title="select" value={country} setValue={setCountry} selectState={selectState} setSelectState={setSelectState} options={countries} setOptions={setCountries}/>
       <Button
         title="Calculate"
         clickFunc={calculateResult}
+        className="calculate"
       />
       {result && (
         <div>
