@@ -6,13 +6,7 @@ import Input from "../Input/Input";
 const Select: React.FC<ISelectProps> = (props: any) => {
   const [filteredOptions, setFilteredOptions] = React.useState<any>([]);
   const handleClickEvent = (e: any) => {
-    // if (!e.target.classList.contains("blur")) {
-    //   props.setSelectState([false, false]);
-    // }
-
     const element = [...document.getElementsByClassName("custom-select")];
-
-    console.log(element, "<<<<<")
 
     let flag = true;
     element.forEach((el) => {
@@ -20,7 +14,6 @@ const Select: React.FC<ISelectProps> = (props: any) => {
         flag = false;
       }
     });
-    console.log(flag)
     if (flag){
       props.setSelectState([false, false]);
     }
@@ -45,14 +38,14 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   }, [props.options]);
 
   return (
-    <div className="custom-select blur" id="custom-select" data-testid="select">
+    <div className="custom-select" id="custom-select" data-testid="select">
       <div
         data-testid="select-tag"
         tabIndex={0}
         className={
           props.selectState[props.index]
-            ? "custom-select__selected-text active blur"
-            : "custom-select__selected-text blur"
+            ? "custom-select__selected-text active"
+            : "custom-select__selected-text"
         }
         onClick={displayList}
         onKeyDown={(e) => {
@@ -73,11 +66,11 @@ const Select: React.FC<ISelectProps> = (props: any) => {
       </div>
       {props.selectState[props.index] && (
         <ul
-          className="custom-select__select-options blur"
+          className="custom-select__select-options"
           aria-label="countries"
           data-testid="list-tag"
         >
-          <div className="search blur">
+          <div className="search">
             <Input
               type="search"
               error={false}
@@ -94,7 +87,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
               return (
                 <li
                   data-testid="list-item-tag"
-                  className="custom-select__select-options__option blur"
+                  className="custom-select__select-options__option"
                   data-name={name}
                   data-value={value}
                   key={index}
@@ -114,12 +107,12 @@ const Select: React.FC<ISelectProps> = (props: any) => {
                       value.charAt(1).toLowerCase()
                     }.png`}
                   />
-                  <div className="blur">{name}</div>
+                  <div>{name}</div>
                 </li>
               );
             })
           ) : (
-            <li className="custom-select__select-options__option blur">
+            <li className="custom-select__select-options__option">
               No result :(
             </li>
           )}

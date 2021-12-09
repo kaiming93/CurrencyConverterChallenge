@@ -6,10 +6,10 @@ const Image: React.FC<IImageProps> = (props: any) => {
   const [failed, setFailed] = React.useState<any>(false);
   React.useEffect(() => {
     setFailed(false)
-  }, []);
+  },[props.src]);
   return (
-    <div className="image blur" data-testid="image">
-        <img data-testid="image" className="image_valid blur" src={failed?logo:props.src} width="48px" onError={(e) => { e?setFailed(true):setFailed(false)} }/>
+    <div className="image" data-testid="image">
+        <img data-testid="image" className="image_valid" src={failed?logo:props.src} width="48px" onError={() => { setFailed(true)} }/>
     </div>
   );
 };

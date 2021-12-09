@@ -32,10 +32,9 @@ const Input: React.FC<IInputProps> = (props: any) => {
     props.setFilteredOptions(newArr);
   };
   return (
-    <div className={props.type === "search"?"input blur":"input"} data-testid="input">
+    <div className="input" data-testid="input">
       {props.label && <label>{props.label}</label>}
       <input
-        className={props.type === "search"?"blur":""}
         data-testid="input-tag"
         type={props.type === "number"?"text":props.type}
         onClick={(event) => props.type !== "search" && props.clickFunc(event)}
