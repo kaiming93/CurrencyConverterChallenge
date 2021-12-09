@@ -37,7 +37,6 @@ const Input: React.FC<IInputProps> = (props: any) => {
       <input
         data-testid="input-tag"
         type={props.type === "number"?"text":props.type}
-        onClick={(event) => props.type !== "search" && props.clickFunc(event)}
         onChange={
           props.type !== "search"
             ? (event) => props.setValue(event.target.value)

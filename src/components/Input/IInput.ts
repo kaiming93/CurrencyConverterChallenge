@@ -5,7 +5,6 @@ export interface IInputProps {
     value?: number|undefined|"";
     type: 'number'|'text'|'search';
     maxLength?: number|undefined;
-    clickFunc?: (event:any) => void;
     triggerFunc?: (event:any) => void;
     error?:boolean;
     options?: Array<JSX.Element | Array<any>>;
