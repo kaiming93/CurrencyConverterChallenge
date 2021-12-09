@@ -3,7 +3,7 @@ import { IImageProps } from "./IImage";
 import logo from '../../img/No_image.svg'
 
 const Image: React.FC<IImageProps> = (props: any) => {
-  const [failed, setFailed] = React.useState<any>(false);
+  const [failed, setFailed] = React.useState<boolean>(false);
   React.useEffect(() => {
     setFailed(false)
   },[props.src]);

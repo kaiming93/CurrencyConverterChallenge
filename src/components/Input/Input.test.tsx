@@ -15,7 +15,6 @@ describe("loads and displays input of type number", () => {
         maxLength={20}
         setValue={mockFunc}
         label="Your currency amount"
-        clickFunc={mockFunc}
         triggerFunc={mockFunc}
       />
     );

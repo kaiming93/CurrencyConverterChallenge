@@ -4,7 +4,7 @@ import Image from "../Image/Image";
 import Input from "../Input/Input";
 
 const Select: React.FC<ISelectProps> = (props: any) => {
-  const [filteredOptions, setFilteredOptions] = React.useState<any>([]);
+  const [filteredOptions, setFilteredOptions] = React.useState<Array<JSX.Element | Array<any>>>([]);
   const handleClickEvent = (e: any) => {
     const element = [...document.getElementsByClassName("custom-select")];
 
@@ -38,7 +38,7 @@ const Select: React.FC<ISelectProps> = (props: any) => {
   }, [props.options]);
 
   return (
-    <div className="custom-select" id="custom-select" data-testid="select">
+    <div className="custom-select" id={`custom-select${props.index}`} data-testid="select">
       <div
         data-testid="select-tag"
         tabIndex={0}

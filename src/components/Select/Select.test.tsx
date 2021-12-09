@@ -10,8 +10,7 @@ describe("loads and displays a select", () => {
       <Select
         index={0}
         title="select"
-        value="GBP"
-        defaultText={"GBP/British Pound Sterling"}
+        value={["GBP","EUR"]}
         setValue={mockFunc}
         selectState={[false, false]}
         setSelectState={mockFunc}
