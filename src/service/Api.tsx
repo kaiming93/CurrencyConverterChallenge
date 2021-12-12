@@ -1,25 +1,25 @@
 import axios from "axios";
 import { act } from "react-dom/test-utils";
 
-export const getRates = (setRates: any, isMounted:boolean) => {
+export const getRates = (setRates: any) => {
   axios
-    .get("https://api.exchangerate-api.com/v4/latest/GBP", {
+    .get("https://v6.exchangerate-api.com/v6/b8057399df1f9720bdc1a419/latest/GBP", {
       headers: {
         "Content-Type": "application/json",
       },
     })
     .then((res) => {
       act(() => {
-        isMounted? setRates(res.data.rates):null;
+        setRates(res.data.conversion_rates);
       });
-      return res.data.rates
+      return res.data.conversion_rates
     })
     .catch((err) => {
-      isMounted && console.log(err);
+      console.log(err);
     });
 };
 
-export const getCountries = (setCountries: any, isMounted:boolean) => {
+export const getCountries = (setCountries: any) => {
   axios
     .get("https://openexchangerates.org/api/currencies.json", {
       headers: {
@@ -28,10 +28,10 @@ export const getCountries = (setCountries: any, isMounted:boolean) => {
     })
     .then((res) => {
       act(() => {
-        isMounted? setCountries(Object.entries(res.data)):null;
+        setCountries(Object.entries(res.data));
       });
     })
     .catch((err) => {
-      isMounted && console.log(err);
+      console.log(err);
     });
 };

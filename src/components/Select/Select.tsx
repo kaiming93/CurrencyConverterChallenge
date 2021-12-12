@@ -5,18 +5,16 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 
 const Select: React.FC<ISelectProps> = (props: ISelectProps) => {
-  const [options, setOptions] = React.useState<Array<JSX.Element | Array<any>>>(
-    []
+  const [options, setOptions] = React.useState<Array<JSX.Element | Array<any>>|undefined>(
+    undefined
   );
-  const [filteredOptions, setFilteredOptions] = React.useState<
-    Array<JSX.Element | Array<any>>
-  >([]);
+  const [filteredOptions, setFilteredOptions] = React.useState<Array<JSX.Element | Array<any>>>([]);
   const handleClickEvent = (e: any) => {
     const element = [...document.getElementsByClassName("custom-select")];
 
     let flag = true;
     element.forEach((el) => {
-      if (e.target !== el && el?.contains(e.target)) {
+      if (e.target !== el && el.contains(e.target)) {
         flag = false;
       }
     });
@@ -90,16 +88,14 @@ const Select: React.FC<ISelectProps> = (props: ISelectProps) => {
               setFilteredOptions={setFilteredOptions}
             />
           </div>
-          {filteredOptions.length > 0 ? (
+          {filteredOptions && filteredOptions.length > 0 ? (
             filteredOptions.map((option: any, index: number) => {
               const name = option[0] + "/" + option[1];
               const value = option[0];
               return (
                 <li
-                  data-testid="list-item-tag"
                   className="custom-select__select-options__option"
-                  data-name={name}
-                  data-value={value}
+                  data-testid="list-item-tag"
                   key={index}
                   tabIndex={0}
                   onClick={() => handleOptionList(name, value)}
@@ -122,7 +118,7 @@ const Select: React.FC<ISelectProps> = (props: ISelectProps) => {
               );
             })
           ) : (
-            <li className="custom-select__select-options__option noresult">
+            <li data-testid="list-item-no-result" className="custom-select__select-options__option noresult">
               <p>No result :(</p>
             </li>
           )}

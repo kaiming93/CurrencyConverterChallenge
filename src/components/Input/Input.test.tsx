@@ -13,7 +13,7 @@ describe("loads and displays input of type number", () => {
       type="number"
       value={undefined}
       maxLength={20}
-      setValue={mockFunc}
+      setValue={mockValue}
       label="Your currency amount"
       triggerFunc={mockFunc}
     />)
@@ -39,7 +39,7 @@ describe("loads and displays input of type number", () => {
       type="number"
       value={undefined}
       maxLength={20}
-      setValue={mockFunc}
+      setValue={mockValue}
       label="Your currency amount"
       triggerFunc={mockFunc}
     />)
@@ -57,7 +57,7 @@ describe("loads and displays input of type number", () => {
       type="number"
       value={'1000...'}
       maxLength={20}
-      setValue={mockFunc}
+      setValue={mockValue}
       label="Your currency amount"
       triggerFunc={mockFunc}
     />)
@@ -75,7 +75,7 @@ describe("loads and displays input of type number", () => {
       type="number"
       value={12345}
       maxLength={20}
-      setValue={mockFunc}
+      setValue={mockValue}
       label="Your currency amount"
       triggerFunc={mockFunc}
     />)
