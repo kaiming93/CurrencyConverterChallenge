@@ -87,8 +87,6 @@ describe("loads and displays currency converter", () => {
       name: "Convert currency",
     });
     expect(calcBtn).toHaveClass("button calculate");
-    // const ratesDiv = await getByTestId(container, "rates");
-    // expect(ratesDiv).toHaveClass("rates");
   });
   test("swap select", () => {
     const { container } = render(<CurrencyConverter />);

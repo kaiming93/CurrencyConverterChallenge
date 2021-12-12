@@ -13,12 +13,13 @@ describe("loads and displays a counter", () => {
   });
   test("loads and displays a counter with even number and trigger setCounter every second", () => {
     const mockCounter = jest.fn();
+    const mockResult = jest.fn();
     render(
       <Counter
         title="counter"
         counter={600}
         setCounter={mockCounter}
-        setResult={mockCounter}
+        setResult={mockResult}
       />
     );
     expect(screen.getByTestId("counter")).toBeInTheDocument();
@@ -52,7 +53,7 @@ describe("loads and displays a counter", () => {
   test("loads and trigger setResult with counter 0", () => {
     const mockCounter = jest.fn();
     const mockResult = jest.fn();
-    const { container } = render(
+    render(
       <Counter
         title="counter"
         counter={0}

@@ -15,7 +15,7 @@ export const getRates = (setRates: any) => {
       return res.data.conversion_rates
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
@@ -32,6 +32,6 @@ export const getCountries = (setCountries: any) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
