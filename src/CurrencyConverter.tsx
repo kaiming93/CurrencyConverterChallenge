@@ -126,7 +126,7 @@ const CurrencyConverter = () => {
       )}
       {result && (
         <div>
-          <h2>
+          <h2 data-testid="result">
             {Number(previousAmount)} {previousCountry[0].key} equals{" "}
             {previousResult} {previousCountry[1].key}
           </h2>

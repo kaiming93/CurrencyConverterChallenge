@@ -3,11 +3,7 @@ import {
   render,
   screen,
   fireEvent,
-  getByRole,
-  getAllByRole,
   getByTestId,
-  waitFor,
-  getByText,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Select from "./Select";
