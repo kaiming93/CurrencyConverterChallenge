@@ -2,6 +2,10 @@
 
 CurrencyConverterChallenge is a currency converter written in React typescript and tested with React testing library.
 
+# Live app
+
+https://currency-converter-kai.netlify.app
+
 ## Installation
 
 Use your package manager to install dependencies from the root directory.
