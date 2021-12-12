@@ -11,34 +11,47 @@ describe("loads and displays a counter", () => {
     jest.runOnlyPendingTimers();
     jest.useRealTimers();
   });
-  test("loads and displays a counter", () => {
-    const mockClick = jest.fn;
+  test("loads and displays a counter with even number and trigger setCounter every second", () => {
+    const mockCounter = jest.fn();
     render(
       <Counter
         title="counter"
         counter={600}
-        setCounter={mockClick}
-        setResult={mockClick}
+        setCounter={mockCounter}
+        setResult={mockCounter}
       />
     );
     expect(screen.getByTestId("counter")).toBeInTheDocument();
+    expect(screen.getByTestId("counter")).toHaveTextContent("Expire in 10:00")
+    expect(mockCounter).toHaveBeenCalledTimes(0);
+    jest.advanceTimersByTime(1000)
+    expect(mockCounter).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(6000)
+    expect(mockCounter).toHaveBeenCalledTimes(7);
   });
-  test("loads and displays a counter", () => {
-    const mockClick = jest.fn;
+  test("loads and displays a counter with uneven number and trigger setCounter every second", () => {
+    const mockCounter = jest.fn();
+    const mockResult = jest.fn();
     render(
       <Counter
         title="counter"
         counter={557}
-        setCounter={mockClick}
-        setResult={mockClick}
+        setCounter={mockCounter}
+        setResult={mockResult}
       />
     );
     expect(screen.getByTestId("counter")).toBeInTheDocument();
+    expect(screen.getByTestId("counter")).toHaveTextContent("Expire in 9:17");
+    expect(mockCounter).toHaveBeenCalledTimes(0);
+    jest.advanceTimersByTime(1000)
+    expect(mockCounter).toHaveBeenCalledTimes(1);
+    jest.advanceTimersByTime(6000)
+    expect(mockCounter).toHaveBeenCalledTimes(7);
   });
 
   test("loads and trigger setResult with counter 0", () => {
-    const mockCounter = jest.fn;
-    const mockResult = jest.fn;
+    const mockCounter = jest.fn();
+    const mockResult = jest.fn();
     const { container } = render(
       <Counter
         title="counter"
@@ -48,7 +61,7 @@ describe("loads and displays a counter", () => {
       />
     );
     expect(screen.getByTestId("counter")).toBeInTheDocument();
-    //fireEvent.click(container);
-    //expect(mockResult).toBeCalled()
+    expect(screen.getByTestId("counter")).toHaveTextContent("Expire in 0:00");
+    expect(mockResult).toHaveBeenCalledTimes(1);
   });
 });

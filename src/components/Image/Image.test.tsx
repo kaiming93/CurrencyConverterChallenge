@@ -6,23 +6,20 @@ import "@testing-library/jest-dom/extend-expect";
 describe("loads and displays an image", () => {
   test("loads correct props with invalid src", () => {
     const { container } = render(
-      <Image width="40px" src="https://flagcdn.com/48x36/an.png" />
+      <Image src="https://flagcdn.com/48x36/an.png" />
     );
     expect(screen.getByTestId("image")).toBeInTheDocument();
     const image = getByRole(container, "img");
     fireEvent.load(image);
     fireEvent.error(image);
-    //expect(fireEvent.error(image)).toBe(true)
   });
   test("loads correct props with valid src", () => {
     const { container } = render(
-      <Image width="40px" src="https://flagcdn.com/48x36/gb.png" />
+      <Image src="https://flagcdn.com/48x36/gb.png" />
     );
     expect(screen.getByTestId("image")).toBeInTheDocument();
     const image = getByRole(container, "img");
     fireEvent.load(image);
     fireEvent.error(image);
-    //expect(screen.getByTestId('valid-image')).toBeInTheDocument();;
-    //expect(container.firstChild?.firstChild).toHaveClass('image_invalid blur')
   });
 });

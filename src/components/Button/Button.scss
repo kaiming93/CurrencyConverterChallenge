@@ -24,6 +24,9 @@
     margin: 28px 0 auto auto;
     .image {
       padding: 0;
+      &_tag {
+        width: 30px;
+      }
     }
   }
   &.calculate {

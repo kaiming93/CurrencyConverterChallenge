@@ -1,40 +1,37 @@
-import axios from 'axios';
-import { act } from 'react-dom/test-utils';
+import axios from "axios";
+import { act } from "react-dom/test-utils";
 
-export const getRates = (setRates:any) => {
-    axios
+export const getRates = (setRates: any, isMounted:boolean) => {
+  axios
     .get("https://api.exchangerate-api.com/v4/latest/GBP", {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-    }).then(response => {
-      act(()=>{
-        setRates(response.data);
-      })
-    }).catch(ex => {
-      const error =
-      ex.response.status === 404
-        ? "Resource Not found"
-        : "An unexpected error has occurred";
-      console.log(error);
-    });;
-}
+    })
+    .then((res) => {
+      act(() => {
+        isMounted? setRates(res.data.rates):null;
+      });
+      return res.data.rates
+    })
+    .catch((err) => {
+      isMounted && console.log(err);
+    });
+};
 
-export const getCountries = (setCountries:any) => {
-    axios
+export const getCountries = (setCountries: any, isMounted:boolean) => {
+  axios
     .get("https://openexchangerates.org/api/currencies.json", {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-    }).then(response => {
-      act(()=>{
-      setCountries(Object.keys(response.data).map((key) => [key, response.data[key]]));
-      })
-    }).catch(ex => {
-      const error =
-      ex.response.status === 404
-        ? "Resource Not found"
-        : "An unexpected error has occurred";
-      console.log(error);
-    });;
-}
+    })
+    .then((res) => {
+      act(() => {
+        isMounted? setCountries(Object.entries(res.data)):null;
+      });
+    })
+    .catch((err) => {
+      isMounted && console.log(err);
+    });
+};

@@ -6,4 +6,5 @@ import '@testing-library/jest-dom/extend-expect';
 test('loads and displays an error', () => {
   render(<Error errorMsg="enter a value"/>)
   expect(screen.getByTestId('error')).toBeInTheDocument();
+  expect(screen.getByTestId('error')).toHaveTextContent("enter a value")
 })
