@@ -34,6 +34,7 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
   return (
     <div className={`input ${props.className}`} data-testid="input">
       {props.label && <label htmlFor={props.title}>{props.label}</label>}
+      <div className="input_outline">
       <input
         data-testid="input-tag"
         type={props.type === "number"?"text":props.type}
@@ -50,7 +51,8 @@ const Input: React.FC<IInputProps> = (props: IInputProps) => {
         }}
         maxLength={props.maxLength}
         placeholder={props.placeholder}
-      />
+      />  
+      </div>
       {props.value === undefined && props.error? (
         <Error errorMsg="Please enter a value" />
       ): isNaN(props.value) && props.error?(

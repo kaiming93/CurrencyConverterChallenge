@@ -3,7 +3,9 @@
   flex-direction: column;
   margin-bottom: 20px;
   width: 100%;
-  border-bottom: 1px solid black;
+  &_outline {
+    border-bottom: 1px solid black;
+  }
   label {
     margin-bottom: 10px;
     font-size: 18px;
