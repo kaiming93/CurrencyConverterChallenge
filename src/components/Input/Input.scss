@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-bottom: 20px;
   width: 100%;
+  border-bottom: 1px solid black;
   label {
     margin-bottom: 10px;
     font-size: 18px;
@@ -14,7 +15,6 @@
     padding: 0px;
     font-size: 28px;
     border: none;
-    border-bottom: 1px solid black;
     width: inherit;
     &:focus {
       outline: none;
