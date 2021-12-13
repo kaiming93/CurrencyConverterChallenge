@@ -84,7 +84,7 @@ const CurrencyConverter = () => {
           className="button swap"
           title="Swap Currency"
           logoAlt="Swap Currency logo"
-        />
+        />  
       </div>
       <Select
         index={0}

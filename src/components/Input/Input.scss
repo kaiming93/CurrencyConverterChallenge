@@ -6,12 +6,16 @@
   label {
     margin-bottom: 10px;
     font-size: 18px;
+    @media only screen and (max-width: 340px) {
+      width: 150%;
+    }
   }
   input {
     padding: 0px;
     font-size: 28px;
     border: none;
     border-bottom: 1px solid black;
+    width: inherit;
     &:focus {
       outline: none;
     }
