@@ -5,10 +5,19 @@
 @import './components/Image/Image.scss';
 
 html {
-    font-family: "Comic Sans MS", "Comic Sans";
+    font-family: "Comic Sans MS", "Comic Sans", "American Typewriter","serif";
     button {
         font-family : inherit;
     }
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="search"] {
+     -webkit-appearance: none;
+     border-radius: 0;
 }
 
 h1 { color: green }
