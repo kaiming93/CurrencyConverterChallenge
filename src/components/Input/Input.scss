@@ -17,7 +17,7 @@
     padding: 0px;
     font-size: 28px;
     border: none;
-    width: inherit;
+    width: 100%;
     &:focus {
       outline: none;
     }
@@ -27,12 +27,14 @@
       font-size: 18px;
       padding: 5px;
       border: 2px solid black;
+      border-radius: 0px;
     }
   }
 }
 
 .search {
   position: relative;
+  background-color: #c4ebc4;
   .input {
     margin-bottom: 0;
     padding: 0;
