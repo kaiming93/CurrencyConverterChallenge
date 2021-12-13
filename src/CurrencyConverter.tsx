@@ -35,10 +35,11 @@ const CurrencyConverter = () => {
   >(undefined);
   const [result, setResult] = React.useState<string | undefined>(undefined);
   const calculateResult = (event: any) => {
+    let reg = /^[0-9.]*$/;
     if (amount === "") {
       setAmount(undefined);
     }
-    if (!amount || isNaN(amount)) {
+    if (!amount || isNaN(amount) || !reg.test(String(amount))) {
       event.preventDefault();
     } else {
       let result =
